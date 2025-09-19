@@ -1,5 +1,6 @@
 package hello.hellospring;
 
+import hello.hellospring.aop.TimeTraceApp;
 import hello.hellospring.repository.JDBCMemberRepository;
 import hello.hellospring.repository.JdbcTemplateMemberRepository;
 import hello.hellospring.repository.JpaMemberRepository;
@@ -14,6 +15,8 @@ import javax.sql.DataSource;
 @Configuration
 public class SpringConfig {
     private final MemberRepository memberRepository;
+
+    @Autowired
     public SpringConfig(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
@@ -21,4 +24,9 @@ public class SpringConfig {
     public MemberService memberService() {
         return new MemberService(memberRepository);
     }
+
+    //@Bean
+    //public TimeTraceApp timeTraceApp(){
+    //   return new TimeTraceApp();
+    //}
 }
